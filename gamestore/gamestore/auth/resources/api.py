@@ -41,9 +41,8 @@ class Login(MethodResource, Resource):
             if user:
                 if bcrypt.check_password_hash(user.password, kwargs['password']):
                     user.is_authenticated = True
-                    login_user(user, remember=True)
+                    login_user(user)
                     token = secrets.token_hex(16)
-                    g.token = token
                     object = {
                         'status': 'OK',
                         'message': "Successfully logged in.",
@@ -59,11 +58,8 @@ class Login(MethodResource, Resource):
 
 
 class Logout(MethodResource, Resource):
-    @login_required
     def get(self):
         try:
-            user = current_user
-            user.is_authenticated = False
             logout_user()
             return {'message': 'Logout'}, 200
         except Exception:

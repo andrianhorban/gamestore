@@ -3,6 +3,8 @@ import s from './style.module.css';
 import NavItem from './NavItem/navitem'
 import NavSign from "./NavSign/navsing";
 import {TokenContext} from "../../../context/tokenContext";
+import NavUser from "./NavUser/NavUser";
+
 
 function Navbar({setToken}) {
     function getToken() {
@@ -22,6 +24,7 @@ function Navbar({setToken}) {
             <NavItem path="/cart" text='Cart'/>
             {roleContext === 'admin' && <NavItem path="/users" text='Users'/>}
             {!tokenContext && <NavSign setToken={setToken} path="/login" text='Sign in'/>}
+            {tokenContext && <NavUser/>}
         </div>
     );
 

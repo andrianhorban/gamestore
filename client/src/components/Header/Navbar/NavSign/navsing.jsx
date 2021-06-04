@@ -20,7 +20,7 @@ export default function NavSign({setToken}) {
     let history = useHistory();
 
 
-    const [tokenContext, setTokenContext, roleContext, setRoleContext] = useContext(TokenContext);
+    const [tokenContext, setTokenContext, roleContext, setRoleContext, userContext, setUserContext] = useContext(TokenContext);
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -29,7 +29,8 @@ export default function NavSign({setToken}) {
         setOpen(false);
     };
 
-    async function loginUser() {
+
+    function handleLog() {
         const requestOptions = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -39,21 +40,19 @@ export default function NavSign({setToken}) {
                 password: refPassword.current.value
             })
         };
-        const a = fetch('http://127.0.0.1:5000/login', requestOptions)
+        fetch('http://127.0.0.1:5000/login', requestOptions)
             .then(response => response.json())
             .then(data => setData(data));
+
+        AddContext()
+        setOpen(false)
     }
 
-    const handleLog = async e => {
-        e.preventDefault();
-        const token = loginUser();
-        console.log(data)
-        const userRole = data.user.role
-        const userToken = data.user.token
-        setTokenContext(userToken)
-        setRoleContext(userRole)
-        setToken(userToken);
-        setOpen(false)
+    function AddContext(){
+        setTokenContext(data.user.token)
+        setRoleContext(data.user.role)
+        setUserContext(data.user.nick_name)
+        setToken(data.user.token);
     }
 
 

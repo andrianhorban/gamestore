@@ -14,6 +14,7 @@ import {DetailedGame} from "./components/Index/DetailedGame/DetailedGame";
 
 function setToken(userToken) {
     sessionStorage.setItem('token', JSON.stringify(userToken));
+
 }
 
 function getToken() {
@@ -26,12 +27,13 @@ function App() {
     const [tokenContext, setTokenContext] = useState("");
     const [roleContext, setRoleContext] = useState("");
     const [idContext, setIdContext] = useState("");
+    const [userContext, setUserContext] = useState("");
     return (
         <div className="App">
 
             <BrowserRouter>
                 <TokenContext.Provider
-                    value={[tokenContext, setTokenContext, roleContext, setRoleContext, idContext, setIdContext]}>
+                    value={[tokenContext, setTokenContext, roleContext, setRoleContext, idContext, setIdContext, userContext, setUserContext]}>
                     <Header setToken={setToken}/>
                     <Switch>
                         <Route exact path='/'>

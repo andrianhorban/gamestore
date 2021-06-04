@@ -1,0 +1,41 @@
+.navsing__block {
+    display: inline-flex;
+
+
+}
+
+.navuser__img {
+
+    width: 30px;
+    height: 30px;
+
+
+}
+
+.navsing__elem {
+    text-decoration: none;
+    background-color: black;
+    color: grey;
+    text-align: left;
+    margin: 10px 5px 0px 350px;
+    padding: 0px 5px 0px 15px;
+    font-size: larger;
+    font-family: "Gill Sans", sans-serif;
+
+
+}
+
+.navsing__but {
+    color: white;
+    font-family: "Gill Sans", sans-serif;
+    text-transform: none;
+
+}
+
+
+.navsing__button {
+    background: green;
+    color: white;
+    opacity: .8;
+}
+
