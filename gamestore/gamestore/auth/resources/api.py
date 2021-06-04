@@ -34,10 +34,7 @@ class Login(MethodResource, Resource):
     def post(self, **kwargs):
         token = 'guest'
         try:
-
-            print(kwargs['mail'])
             user = User.query.filter_by(mail=kwargs['mail']).first()
-            print(user.nick_name)
             if user:
                 if bcrypt.check_password_hash(user.password, kwargs['password']):
                     user.is_authenticated = True

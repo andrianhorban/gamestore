@@ -8,24 +8,40 @@ from .schemas import CartRequestSchema, CartBaseSchema
 from gamestore import Game
 
 a = []
+
+
 class CartResource(MethodResource, Resource):
 
     @marshal_with(CartBaseSchema(many=True))
     def get(self):
         """items in cart"""
-
+        total_sum = 0
         try:
 
             purchased_products = [Game.query.filter(Game.id == id).first() for id in session['cart']]
             print(purchased_products)
-            total_sum = "to be realised"
+            for item in purchased_products:
+                total_sum = total_sum + item.price
+                item.quantity = 0
+
+            response = []
+            for item in purchased_products:
+                flag = False
+                for elem in response:
+                    if item.title == elem.title:
+                        elem.quantity += 1
+                        flag = True
+                if not flag:
+                    item.quantity = 1
+                    response.append(item)
 
             if not purchased_products:
                 print('if nor')
                 return {'message': 'Cart is empty.'}, 200
             else:
-                print('dgd')
-                return purchased_products
+                print(total_sum)
+                print(response)
+                return response
 
         except Exception:
             return {'message': 'Cart error.'}, 500
@@ -41,17 +57,6 @@ class CartResource(MethodResource, Resource):
             session['cart'].append(kwargs['id'])
             a.append(kwargs['id'])
             session.modified = True
-            print("ADasd")
-            print("ADasd")
-            print("ADasd")
-            print("ADasd")
-            print("ADasd")
-            print(session['cart'])
-            print("ADasd")
-            print("ADasd")
-            print("ADasd")
-            print("ADasd")
-            print("ADasd")
             return {'message': 'Added to cart.'}, 200
         except Exception:
             return {'message': 'Adding to cart error.'}, 500
@@ -60,15 +65,8 @@ class CartResource(MethodResource, Resource):
     def delete(self, **kwargs):
         """delete item"""
         try:
-            print('del')
-            print('del')
-            print('del')
+
             item = next(item for item in session['cart'] if item == kwargs['id'])
-            print(item)
-            print('del')
-            print('del')
-            print('del')
-            print('del')
             session['cart'].remove(item)
             session.modified = True
             return {'message': 'Item deleted from cart'}, 200

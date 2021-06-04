@@ -2,6 +2,7 @@
     box-sizing: border-box;
 }
 
+
 .body {
 
     color: black;
@@ -10,9 +11,17 @@
     margin-top: 113px;
     background: #1e1e1e;
 
+
 }
 .cart__div_main{
     margin-left: 250px;
+}
+
+.cart__total_price{
+    color: white;
+    font-weight: bold;
+    font-size: xx-large;
+    margin-left: 58%;
 }
 .game_list {
     color: white;

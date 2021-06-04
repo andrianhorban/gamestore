@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import s from './style.module.css';
 
-function CartItem({id, title, price}) {
+function CartItem({id, title, price,quantity}) {
     const [images, setImage] = useState([]);
     const chunks = images.reduce((chunks, value, index) => {
         const chunkIndex = Math.floor(index);
@@ -58,7 +58,7 @@ function CartItem({id, title, price}) {
 
             <div className={s.cartitem__div_section_right}>
                 <div className={s.cartitem__div_section_left_2}>
-                    asd
+                     {quantity} Pcs. ${quantity*price}.00
                 </div>
                 <div className={s.cartitem__div_section_right_2}>
                     <button className={s.cartitem__button_delete} onClick={handleDelete}>X</button>
