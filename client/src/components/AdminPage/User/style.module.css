@@ -1,0 +1,24 @@
+.user__edit_button {
+    background: green;
+
+    color: white;
+    width: 60px;
+    height: 30px;
+    opacity: .8;
+    margin: 3px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+}
+
+.user__delete_button {
+    background: red;
+    color: white;
+    width: 60px;
+    height: 30px;
+    opacity: .8;
+    margin: 3px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+}

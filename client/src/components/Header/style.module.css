@@ -1,0 +1,24 @@
+.header {
+    position: absolute;
+    height: 83px;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: black;
+    width: 100%;
+    display: flex;
+}
+.header__block{
+    display: inline-block;
+}
+.header__title{
+    color: white;
+    font-weight: bolder;
+    font-family: "Gill Sans", sans-serif;
+    font-size: 31px;
+    text-align: center;
+    padding: 10px 5px 5px 20px;
+    width: 250px;
+    position: sticky;
+    margin: 0.7% 1%  1% 1%;
+}

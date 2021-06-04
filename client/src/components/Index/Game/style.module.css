@@ -1,0 +1,89 @@
+.game__buy_button {
+    background: rgba(20,255,20,0.6);
+    color: white;
+    width: 60px;
+    height: 30px;
+    margin: 3px;
+    border-radius: 1px;
+    border: none;
+    text-align: center;
+}
+
+.game__info_button{
+    background: rgba(12, 12, 12, 0.6);
+    color: white;
+    width: 60px;
+    height: 30px;
+    margin: 3px;
+    border-radius: 1px;
+    border: none;
+    text-align: center;
+}
+.game__delete_button {
+    background: red;
+    color: white;
+    width: 60px;
+    height: 30px;
+    margin: 3px;
+    border-radius: 1px;
+    border: none;
+    text-align: center;
+}
+
+img {
+    width: 100%;
+    height: 350px;
+}
+
+.game__div_main {
+    position: relative;
+    width: 100%; /* для IE 6 */
+}
+
+.game__div_upper {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    color: white;
+    display: flex;
+    background: rgba(12, 12, 12, 0.7);
+    bottom: 0;
+    height: 90px;
+
+}
+
+.game__section_left {
+
+    padding: 5px;
+    width: 73%;
+    display: table-cell;
+    vertical-align: bottom;
+
+
+}
+
+.game__section_right {
+    right: 0;
+    width: 19%;
+    padding: 5px;
+
+}
+
+.game__div_title {
+    right: 0;
+    font-weight: bold;
+    bottom: 0;
+    font-size: large;
+
+}
+
+.game__div_price {
+    font-size: x-large;
+    font-weight: lighter;
+}
+
+.game__div_genre {
+
+    font-size: smaller;
+    font-weight: bold;
+}

@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+
+.body {
+
+    color: black;
+    width: 100%;
+    min-height: calc(100vh - 200px);
+    margin-top: 113px;
+    background: #1e1e1e;
+
+}
+.cart__div_main{
+    margin-left: 250px;
+}
+.game_list {
+    color: white;
+    position: relative;
+    border: 3px solid black;
+    display: block;
+    float: bottom;
+    padding: 10px;
+    width: 80%;
+    height: 150px;
+    z-index: 200;
+    margin: 20px 20px 10px 20px;
+
+}
+

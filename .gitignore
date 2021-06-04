@@ -1,0 +1,6 @@
+venv/
+.idea
+migrations/
+../.idea/
+__pycache__/
+flask_session/

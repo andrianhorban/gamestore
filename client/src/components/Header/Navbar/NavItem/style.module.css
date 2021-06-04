@@ -1,0 +1,23 @@
+.navitem__block{
+    display: inline-block;
+    position: relative;
+
+}
+.navitem__elem{
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    text-align: left;
+    margin: 5px 5px 5px 10px;
+    padding: 10px 5px 5px 15px;
+    font-size: larger;
+    font-family: "Gill Sans", sans-serif;
+
+
+
+}
+
+.navitem__elem_active{
+    text-transform: uppercase;
+    color: gold;
+}
