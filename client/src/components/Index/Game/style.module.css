@@ -55,7 +55,7 @@ img {
 .game__section_left {
 
     padding: 5px;
-    width: 73%;
+    width: 81%;
     display: table-cell;
     vertical-align: bottom;
 
@@ -64,7 +64,7 @@ img {
 
 .game__section_right {
     right: 0;
-    width: 19%;
+    width: 10%;
     padding: 5px;
 
 }

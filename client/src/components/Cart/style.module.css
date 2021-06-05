@@ -4,13 +4,12 @@
 
 
 .body {
-
+    margin-top: 30px;
+    margin-bottom: 30px;
     color: black;
     width: 100%;
     min-height: calc(100vh - 200px);
-    margin-top: 113px;
     background: #1e1e1e;
-
 
 }
 .cart__div_main{
