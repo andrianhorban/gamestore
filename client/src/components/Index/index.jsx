@@ -4,6 +4,7 @@ import {Game} from "./Game/game";
 
 function Index() {
     const [games, setGames] = useState([]);
+
     const chunks = games.reduce((chunks, value, index) => {
         const chunkIndex = Math.floor(index);
         if (!chunks[chunkIndex]) {

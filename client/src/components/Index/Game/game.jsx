@@ -52,10 +52,10 @@ function Game({title, text, price, genre, id}) {
             .then(data => console.log(data));
     }
 
-    function handleEdit(value) {
+    function handleDetailed(value) {
         setIdContext(id)
         history.push({
-            pathname: '/image',
+            pathname: '/detailed_game',
             state: {id: id}
         })
     }
@@ -92,7 +92,7 @@ function Game({title, text, price, genre, id}) {
                 </div>
                 <div className={s.game__section_right}>
                     <button className={s.game__buy_button} onClick={() => handleBuy({id})}>Buy</button>
-                    <button className={s.game__info_button} onClick={() => handleEdit()}>Detailed</button>
+                    <button className={s.game__info_button} onClick={() => handleDetailed()}>Detailed</button>
 
                 </div>
 
