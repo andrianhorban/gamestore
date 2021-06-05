@@ -1,13 +1,12 @@
 import base64
 
 from flask import request
-from flask_apispec import MethodResource, use_kwargs
-from flask_restful import Resource, reqparse, marshal_with
+from flask_apispec import MethodResource
+from flask_restful import Resource
 from werkzeug.utils import secure_filename
 
-from gamestore.gamestore.image.schema import ImageResponseSchema, ImageRequestSchema, ImageBaseSchema
-from ..model import Image, Game
-from ... import db
+from gamestore.gamestore.model import Image, Game
+from gamestore import db
 
 
 class ImageResource(MethodResource, Resource):

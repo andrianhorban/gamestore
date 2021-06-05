@@ -74,7 +74,7 @@ def resource_adding(api):
     from gamestore.gamestore.cart.resources.api import CartResource
     api.add_resource(CartResource, '/api/cart')
 
-    from gamestore.gamestore.image.api import ImageResource
+    from gamestore.gamestore.image.resources.api import ImageResource
     api.add_resource(ImageResource, '/api/image')
 
     from gamestore.gamestore.user.resources.api import UserResource
