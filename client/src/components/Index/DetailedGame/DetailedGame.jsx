@@ -58,7 +58,7 @@ class DetailedGame extends React.Component {
     }
 
     render() {
-        const {tokenContext, setTokenContext, roleContext, setRoleContext, idContext, setIdContext} = this.context
+        const {tokenContext, setTokenContext, roleContext, setRoleContext, idContext, setIdContext, userContext, setUserContext} = this.context
         let cont = this.context[4]
         return (
 

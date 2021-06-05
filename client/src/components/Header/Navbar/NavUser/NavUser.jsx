@@ -7,7 +7,7 @@ import {Menu, MenuItem} from "@material-ui/core";
 
 export default function NavUser() {
 
-    const [tokenContext, setTokenContext, roleContext, setRoleContext, userContext, setUserContext] = useContext(TokenContext);
+    const [tokenContext, setTokenContext, roleContext, setRoleContext, idContext, setIdContext, userContext, setUserContext] = useContext(TokenContext);
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 

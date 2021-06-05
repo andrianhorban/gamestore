@@ -13,7 +13,7 @@ function Navbar({setToken}) {
         return userToken?.token
     }
 
-    const [tokenContext, setTokenContext, roleContext, setRoleContext] = useContext(TokenContext)
+    const [tokenContext, setTokenContext, roleContext, setRoleContext, idContext, setIdContext, userContext, setUserContext] = useContext(TokenContext)
     return (
 
         <div className={s.navbar}>

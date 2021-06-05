@@ -20,7 +20,7 @@ export default function NavSign({setToken}) {
     let history = useHistory();
 
 
-    const [tokenContext, setTokenContext, roleContext, setRoleContext, userContext, setUserContext] = useContext(TokenContext);
+    const [tokenContext, setTokenContext, roleContext, setRoleContext, idContext, setIdContext, userContext, setUserContext] = useContext(TokenContext);
     const handleClickOpen = () => {
         setOpen(true);
     };
