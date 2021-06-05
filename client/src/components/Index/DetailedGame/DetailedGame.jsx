@@ -1,99 +1,94 @@
 import React, {useContext, useEffect, useState} from 'react';
-import s from '../Game/style.module.css';
-import {Link, useHistory} from "react-router-dom";
+import s from '../DetailedGame/style.module.css';
 import {TokenContext} from "../../../context/tokenContext";
+import {element} from "prop-types";
 
 
-function DetailedGame() {
-    let history = useHistory()
+class DetailedGame extends React.Component {
+    static contextType = TokenContext
 
-    const [games, setGames] = useState([]);
-    const [images, setImage] = useState([]);
-    const game_list = games.reduce((game_list, value, index) => {
-        const chunkIndex = Math.floor(index);
-        if (!game_list[chunkIndex]) {
-            game_list[chunkIndex] = [];
-        }
-        game_list[chunkIndex].push(value);
-        return game_list;
+    constructor(props) {
+        super(props);
 
-    }, []);
+        this.state = {
+            game: [],
+            img: [],
+            picture: '',
+            title: '',
+            text: '',
+            price: '',
+            genre: '',
+            event: Event
+        };
 
-    const img_list = images.reduce((img_list, value, index) => {
-        const chunkIndex = Math.floor(index);
-        if (!img_list[chunkIndex]) {
-            img_list[chunkIndex] = [];
-        }
-        img_list[chunkIndex].push(value);
-        return img_list;
+        this.handleBuy = this.handleBuy.bind(this)
+    }
 
-    }, []);
-
-    const [tokenContext, setTokenContext, roleContext, setRoleContext, idContext, setIdContext] = useContext(TokenContext)
-    useEffect(() => {
+    componentDidMount() {
         fetch('http://127.0.0.1:5000/api/game').then(response =>
             response.json().then(data => {
-                setGames(data)
+                this.setState({game: data.find(element => element['id'] == this.context[4])})
+                this.setState({
+                    title: this.state.game['title'],
+                    text: this.state.game['text'],
+                    price: this.state.game['price'],
+                    genre: this.state.game['genre']
+                })
             })
         );
         fetch('http://127.0.0.1:5000/api/image').then(response =>
             response.json().then(data => {
-                setImage(data)
+                this.setState({img: data.find(element => element['game_id'] == this.context[4])})
+                this.setState({picture: this.state.img['image']})
             })
         );
-    });
-
-    function FindGame() {
-        for (let i of game_list) {
-            for (let j of i) {
-                if (j['game_id'] == idContext) {
-                    let temp = j
-                    return temp
-                }
-            }
-        }
     }
 
-    function FindImage() {
-        for (let i of img_list) {
-            for (let j of i) {
-                if (j['game_id'] == idContext) {
-                    let temp = j['image']
-                    return temp
-                }
-            }
-        }
-    }
-
-    function handleBuy(value) {
+    handleBuy(event, value) {
 
         const requestOptions = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             credentials: "include",
-            body: JSON.stringify({id: idContext})
+            body: JSON.stringify({id: this.context[4]})
         };
         fetch('http://127.0.0.1:5000/api/cart', requestOptions)
             .then(response => console.log(response.json()))
             .then(data => console.log(data));
     }
 
+    render() {
+        const {tokenContext, setTokenContext, roleContext, setRoleContext, idContext, setIdContext} = this.context
+        let cont = this.context[4]
+        return (
 
-    let game = FindGame()
-    let imag = FindImage()
-    return (
-        <div>
+            <div className={s.body}>
+                <div className={s.detailed__div_main}>
 
-            <p>{game.title}</p>
-            <p>{game.text}</p>
-            <p>{game.genre}</p>
-            <p>{game.price}</p>
-            <img className={s.img} src={`data:image/jpeg;base64,${imag}`} alt='image'/>
-            <button className={s.game__buy_button} onClick={() => handleBuy()}>Buy</button>
+                    <div className={s.detailed__div_left}>
 
+                        <img className={s.detailed__img} src={`data:image/jpeg;base64,${this.state.picture}`} alt='image'/>
+                    </div>
+                    <div className={s.detailed__div_right}>
+                        <div className={s.detailed__div_title}>
+                            {this.state.title}
+                        </div>
+                        <div className={s.detailed__div_genre}>
+                            {this.state.genre}
+                        </div>
+                        <div className={s.detailed__div_text}>
+                            {this.state.text}
+                        </div>
+                        <div className={s.detailed__div_price}>
+                            Price: ${this.state.price}.00
+                        </div>
 
-        </div>
-    )
+                        <button className={s.detailed__button_buy} onClick={() => this.handleBuy()}>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }
 
 export {DetailedGame};
